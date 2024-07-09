@@ -1,26 +1,11 @@
 import React, {useEffect, useState} from 'react';
+import TimeKeeper from "../TimeKeeper/TimeKeeper";
 
 
 const ParkingManager = () => {
     const [parking, setParking] = useState(3);
     const [currentPlate, setCurrentPlate] = useState('');
     const [activeCars, setActiveCars] = useState([]);
-
-
-    const Timer = ({initialSeconds}) => {
-        const [seconds, setSeconds] = useState(initialSeconds);
-        useEffect(() => {
-            const interval = setInterval(() => {
-
-                //setParking(prevParking => prevParking + 1);
-                //perform calc
-
-
-            }, 1000);
-
-            return () => clearInterval(interval); // Cleanup interval on component unmount
-        }, []);
-    };
 
     const handleInputChange = (event) => {
         setCurrentPlate(event.target.value);
@@ -31,7 +16,7 @@ const ParkingManager = () => {
         setParking(parking - 1);
 
         //add current plate to array of cars
-        let newCar = [currentPlate, new Timer(10000)];
+        let newCar = [currentPlate, 'timer'];
         setActiveCars([...activeCars, newCar]);
 
         //update table
@@ -78,7 +63,7 @@ const ParkingManager = () => {
                             return (
                                 <tr key={index}>
                                     <td className="px-4 py-4 uppercase">{car[0]}</td>
-                                    <td className="px-6 py-4">{car[1]}</td>
+                                    <TimeKeeper />
                                     <td className="px-6 py-4">
                                         <a href={'/'} className={'text-red-600 font-bold'}>X</a>
                                     </td>
