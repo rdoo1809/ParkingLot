@@ -1,4 +1,4 @@
-# React Parking Lot Manager Dashboard
+# React Parking Lot Dashboard
 
 This project is a front end dashoard built with React+Tailwind. 
 
